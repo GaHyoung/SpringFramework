@@ -3,59 +3,34 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+
+
         default-init-method="init"
         default-destroy-method="destroy"
 >
+    <!--     아래처럼 직접 지정하지 않고 위 코드처럼 기본 초기화, 소멸 작업을 등록해 진행 가능.-->
 
     <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter"
-          scope="singleton"
-          destroy-method="cleanup">
+        scope="singleton"
+        init-method="init"
+        destroy-method="destroy">
     </bean>
-
     <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter"
-          scope="prototype"
-          init-method="init">
+        scope="prototype"
+        init-method="init"
+        destroy-method="destroy">
     </bean>
-
-
 
     <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"
-          scope="singleton"
-          init-method="init"
-          destroy-method="destroy">
+        scope="singleton"
+        init-method="init"
+        destroy-method="destroy">
     </bean>
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender"
-          scope="prototype"
-          init-method="init"
-          destroy-method="destroy">
+        scope="prototype"
+        init-method="init"
+        destroy-method="destroy">
     </bean>
 
-<!--  injection-->
-<!--    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >-->
-<!--        <constructor-arg ref="koreanGreeter" />-->
-<!--    </bean>-->
-<!--  setter-->
-<!--    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >-->
-<!--        <property name="greeter" ref="koreanGreeter"/>-->
-<!--    </bean>-->
-
-<!--  injection-->
-<!--    MessegeSenderService의 MessageSender에 값을 주입하려면 생성자를 통해 주입해야함. 이때 ref값이 위에 적어둔 smsmessagesender객체.-->
-<!--    <bean id="messageSenderService" class="com.nhnacademy.edu.springframework.messagesender.MessegeSenderService" >-->
-<!--        <constructor-arg ref="smsmessagesender" />-->
-<!--    </bean>-->
-<!--  setter-->
-<!--    <bean id="messageSenderService" class="com.nhnacademy.edu.springframework.messagesender.MessegeSenderService">-->
-<!--        <property name="messegeSender" ref="smsmessagesender"/>-->
-<!--    </bean>-->
-
-
-<!--    autowired-->
-    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService"
-          autowire="byName">
-    </bean>
-    <bean id="messageSenderService" class="com.nhnacademy.edu.springframework.messagesender.MessageSenderService"
-          autowire="byName">
-    </bean>
 
 </beans>

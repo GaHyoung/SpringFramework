@@ -8,4 +8,12 @@ public class SmsMessageSender implements MessageSender {
     public void sendMessage(User user, String message) {
         System.out.printf("SMS Message Sent to %s : %s %n", user.getPhoneNumber(), message);
     }
+
+    private void init() {
+        System.out.println("init method called in SmsMessageSender");
+    }
+
+    private void destroy() {
+        System.out.println("destroy method called in SmsMessageSender");
+    }
 }

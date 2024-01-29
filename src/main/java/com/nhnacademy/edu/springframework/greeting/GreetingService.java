@@ -12,16 +12,19 @@ public class GreetingService {
     // 생성자 주입 방식을 사용하므로, 주입 대상 스프링빈에 적절한 생성자가 필요하다.
     // GreetingService 가 Greeter 를 생성자 인자로 받을 수 있도록 생성자를 추가
     // GreetingService를 bean으로 등록해 생성자를 이용하여 koreanGreeter 빈을 주입.
-    public GreetingService(Greeter greeter){
-        this.greeter = greeter;
-    }
+//    public GreetingService(Greeter greeter){
+//        this.greeter = greeter;
+//    }
 
     // Setter Injection
     // 기본 생성자 필요
     public GreetingService(){
     }
 
-    public void setGreeter(Greeter greeter){
+    //autowire 속성을 byName 으로 설정했기 때문에 setter 메소드의 이름을 setKoreanGreeter 로 수정
+    //autowire 속성을 사용할 때에는 빈의 이름과 메서드 이름이 매칭되어야 한다.
+    //koreanGreeter기 빈의 이름.
+    public void setKoreanGreeter(Greeter greeter){
         System.out.println("setGreeter invoked");
         this.greeter = greeter;
     }

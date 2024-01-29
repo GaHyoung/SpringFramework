@@ -14,8 +14,11 @@ public class Main {
         );
 
         String message = "Hello";
-        new MessageSendService(new EmailMessageSender()).doMessage(user, message);
-        new MessageSendService(new SmsMessageSender()).doMessage(user, message);
+        //autowired 실행.
+        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
+            GreetingService service = context.getBean("greetingService", GreetingService.class);
+            service.greet();
+        }
 
     }
 }

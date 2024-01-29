@@ -7,15 +7,15 @@ public class MessageSendService {
     private MessageSender messageSender;
 
     //MessageSendService는 컴파일시에 어떤 MessageSender를 사용할지 결정하지 않음
-    public MessageSendService(MessageSender messageSender){
-        this.messageSender = messageSender;
-    }
+//    public MessageSendService(MessageSender messageSender){
+//        this.messageSender = messageSender;
+//    }
 
 
     //setter injection
     public MessageSendService(){
     }
-    public void setMessageSender(MessageSender messageSender) {
+    public void setSmsMessageSender(MessageSender messageSender) {
         System.out.println("setMessageSender invoked");
         this.messageSender = messageSender;
     }

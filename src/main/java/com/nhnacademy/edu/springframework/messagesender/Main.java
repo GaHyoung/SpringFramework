@@ -12,12 +12,10 @@ public class Main {
                 "mnb2457@naver.com",
                 "010-1111-1111"
         );
-        String message = "constructor injection";
 
-        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
-            MessageSendService service = context.getBean("mesageSendService", MessageSendService.class);
-            service.doMessage(user, message);
-        }
+        String message = "Hello";
+        new MessageSendService(new EmailMessageSender()).doMessage(user, message);
+        new MessageSendService(new SmsMessageSender()).doMessage(user, message);
 
     }
 }

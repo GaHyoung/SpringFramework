@@ -44,6 +44,10 @@
     <bean id="greetingService2" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >
         <property name="greeter" ref="koreanGreeter" />
     </bean>
+    <bean id="mesageSendService2" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService" >
+        <property name="messageSender" ref="smsMessageSender" />
+    </bean>
+
 
 
 

@@ -4,11 +4,25 @@ import com.nhnacademy.edu.springframework.greeting.service.Greeter;
 
 public class GreetingService {
 
-    //GreetingService 는 컴파일 타임에 어떤 Greeter 가 실행되는지 알 수 없다.
-
+    // final은 객체를 생성한뒤 greeter 변수에 값을 할당할 수 없다.
+    // private final Greeter greeter;
     private Greeter greeter;
 
+    // Constructor Injection
+    // 생성자 주입 방식을 사용하므로, 주입 대상 스프링빈에 적절한 생성자가 필요하다.
+    // GreetingService 가 Greeter 를 생성자 인자로 받을 수 있도록 생성자를 추가
+    // GreetingService를 bean으로 등록해 생성자를 이용하여 koreanGreeter 빈을 주입.
     public GreetingService(Greeter greeter){
+        this.greeter = greeter;
+    }
+
+    // Setter Injection
+    // 기본 생성자 필요
+    public GreetingService(){
+    }
+
+    public void setGreeter(Greeter greeter){
+        System.out.println("setGreeter invoked");
         this.greeter = greeter;
     }
 

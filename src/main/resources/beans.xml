@@ -10,27 +10,42 @@
 >
     <!--     아래처럼 직접 지정하지 않고 위 코드처럼 기본 초기화, 소멸 작업을 등록해 진행 가능.-->
 
-    <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter"
-        scope="singleton"
-        init-method="init"
-        destroy-method="destroy">
-    </bean>
+<!--    <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter"-->
+<!--        scope="singleton"-->
+<!--        init-method="init"-->
+<!--        destroy-method="destroy">-->
+<!--    </bean>-->
     <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter"
         scope="prototype"
         init-method="init"
         destroy-method="destroy">
     </bean>
 
-    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"
-        scope="singleton"
-        init-method="init"
-        destroy-method="destroy">
-    </bean>
+<!--    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"-->
+<!--        scope="singleton"-->
+<!--        init-method="init"-->
+<!--        destroy-method="destroy">-->
+<!--    </bean>-->
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender"
         scope="prototype"
         init-method="init"
         destroy-method="destroy">
     </bean>
+
+<!--    Constructor Injection-->
+    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >
+        <constructor-arg ref="koreanGreeter" />
+    </bean>
+    <bean id="mesageSendService" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService" >
+        <constructor-arg ref="smsMessageSender" />
+    </bean>
+
+<!--    Setter Injection-->
+    <bean id="greetingService2" class="com.nhnacademy.edu.springframework.greeting.GreetingService" >
+        <property name="greeter" ref="koreanGreeter" />
+    </bean>
+
+
 
 
 </beans>

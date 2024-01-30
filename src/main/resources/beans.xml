@@ -37,11 +37,16 @@
     </bean>
 
 <!--  property  무조건 넣도록 강제!-->
-    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">
-        <property name="koreanGreeter" ref="englishGreeter"/>
-    </bean>
+<!--    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">-->
+<!--        <property name="koreanGreeter" ref="englishGreeter"/>-->
+<!--    </bean>-->
 <!--    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService"-->
 <!--          autowire="byName">-->
 <!--    </bean>-->
+
+    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">
+        <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
+    </bean>
+
 
 </beans>

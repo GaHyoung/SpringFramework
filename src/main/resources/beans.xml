@@ -39,14 +39,6 @@
         <qualifier type="com.nhnacademy.edu.springframework.messagesender.annotaion.Sms"/>
     </bean>
 
-<!--  property  무조건 넣도록 강제!-->
-<!--    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">-->
-<!--        <property name="koreanGreeter" ref="englishGreeter"/>-->
-<!--    </bean>-->
-<!--    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService"-->
-<!--          autowire="byName">-->
-<!--    </bean>-->
-
     <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">
         <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
     </bean>
@@ -54,5 +46,17 @@
         <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
     </bean>
 
+<!--    Custom Qualifier 에 @Qualifer 를 설정하지 않아도 동작하도록 구성-->
+<!--    <bean class="org.springframework.beans.factory.annotation.CustomAutowireConfigurer">-->
+<!--        <property name="customQualifierTypes">-->
+<!--            <set>-->
+<!--                <value>com.nhn.edu.springframework.ioc.stereotype.GreeterQualifier</value>-->
+<!--            </set>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    beans는 하나만! 주의. context:property-placeholder는 하나만 사용할 수 있음.-->
+<!--        <context:property-placeholder location="classpath:greeter.properties" />-->
+        <context:property-placeholder location="classpath:name.properties" />
 
 </beans>

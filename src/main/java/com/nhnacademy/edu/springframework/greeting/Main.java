@@ -7,9 +7,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         //autowired 실행.
-        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
-            GreetingService service = context.getBean("greetingService", GreetingService.class);
-            service.greet();
-        }
+//        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
+//            GreetingService service = context.getBean("greetingService", GreetingService.class);
+//            service.greet();
+//        }
     }
 }

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Qualifier
+//@Qualifier  <-- 주석처리를 해도 bean.xml의 CustomAutowireConfigurer 때문에 동작합니다.
 public @interface GreeterQualifier {
     Language language();
     boolean dummy();

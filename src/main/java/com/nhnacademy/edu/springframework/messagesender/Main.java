@@ -19,10 +19,14 @@ public class Main {
 
         //XML 대신 java 기반 설정을 위해서는 AnnotationConfigApplicationContext 를 사용
         //해당 패키지 안에 있는 @Configuration을 찾아간다.
-        AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext("com.nhnacademy.edu.springframework.messagesender");
 
-        context.getBean("dbms", String.class).isEmpty();
 
+        //아직 실행 안됨.
+        try (AnnotationConfigApplicationContext context
+                     = new AnnotationConfigApplicationContext("com.nhnacademy.edu.springframework.messagesender")) {
+            MessageSendService service = context.getBean("smsMessageSender", MessageSendService.class);
+
+            service.doMessage(user, message);
+        }
     }
 }

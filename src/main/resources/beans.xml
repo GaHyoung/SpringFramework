@@ -37,9 +37,9 @@
     <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">
         <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
     </bean>
-    <bean id="messageSendervice" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService">
-        <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
-    </bean>
+<!--    <bean id="messageSendervice" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService">-->
+<!--        &lt;!&ndash; 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 &ndash;&gt;-->
+<!--    </bean>-->
 
 <!--    beans는 하나만! 주의. context:property-placeholder는 하나만 사용할 수 있음.-->
 <!--        <context:property-placeholder location="classpath:greeter.properties" />-->

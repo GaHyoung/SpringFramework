@@ -10,6 +10,7 @@ public class Main {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext("com.nhnacademy.edu.springframework.greeting");
 
-        context.getBean("dbms", String.class).isEmpty();
+        GreetingService service = context.getBean(GreetingService.class);
+        service.greet();
     }
 }

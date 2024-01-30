@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 public class GreetingService {
     private Greeter greeter;
 
-    @Value("$from")
+    @Value("${from}")
     private String from;
 
     //@Autowire 할때, @Qualifier 를 지정하여 빈의 이름으로 의존성을 주입 할 수 있다.

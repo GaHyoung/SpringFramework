@@ -2,8 +2,13 @@ package com.nhnacademy.edu.springframework.messagesender.service;
 
 import com.nhnacademy.edu.springframework.messagesender.User;
 import com.nhnacademy.edu.springframework.messagesender.service.MessageSender;
+import org.springframework.stereotype.Component;
 
+@Component("smsMessageSender")
 public class SmsMessageSender implements MessageSender {
+    public SmsMessageSender(){
+
+    }
     @Override
     public void sendMessage(User user, String message) {
         System.out.printf("SMS Message Sent to %s : %s %n", user.getPhoneNumber(), message);

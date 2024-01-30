@@ -2,6 +2,7 @@ package com.nhnacademy.edu.springframework.messagesender;
 
 import com.nhnacademy.edu.springframework.greeting.GreetingService;
 import com.nhnacademy.edu.springframework.messagesender.config.ApplicationConfig;
+import com.nhnacademy.edu.springframework.messagesender.config.MainConfig;
 import com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender;
 import com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -23,8 +24,8 @@ public class Main {
 
         //아직 실행 안됨.
         try (AnnotationConfigApplicationContext context
-                     = new AnnotationConfigApplicationContext("com.nhnacademy.edu.springframework.messagesender")) {
-            MessageSendService service = context.getBean("smsMessageSender", MessageSendService.class);
+                     = new AnnotationConfigApplicationContext(MainConfig.class)) {
+            MessageSendService service = context.getBean("messageSenderService", MessageSendService.class);
 
             service.doMessage(user, message);
         }

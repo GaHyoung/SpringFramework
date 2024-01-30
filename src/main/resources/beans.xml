@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-        default-init-method="init"
-        default-destroy-method="destroy"
->
-    <!--     아래처럼 직접 지정하지 않고 위 코드처럼 기본 초기화, 소멸 작업을 등록해 진행 가능.-->
+    <!-- annotation설정을 위해 추가-->
+    <context:annotation-config/>
+    <!-- @Required 애너테이션 사용을 위해 추가 -->
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+
+
 
     <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter"
         scope="singleton"
         init-method="init"
         destroy-method="destroy">
     </bean>
-    <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter"
-        scope="prototype"
-        init-method="init"
-        destroy-method="destroy">
-    </bean>
+<!--    <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter"-->
+<!--        scope="prototype"-->
+<!--        init-method="init"-->
+<!--        destroy-method="destroy">-->
+<!--    </bean>-->
 
     <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"
           scope="singleton"
@@ -32,12 +36,12 @@
           destroy-method="destroy">
     </bean>
 
-
-    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService"
-          autowire="byName">
+<!--  property  무조건 넣도록 강제!-->
+    <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">
+        <property name="koreanGreeter" ref="englishGreeter"/>
     </bean>
-    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService"
-          autowire="byName">
-    </bean>
+<!--    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService"-->
+<!--          autowire="byName">-->
+<!--    </bean>-->
 
 </beans>

@@ -12,7 +12,7 @@ public class Main {
 
         User user = new User(
                 "mnb2457@naver.com",
-                "010-1111-1111"
+                "010-1111-2222"
         );
 
         String message = "Hello";

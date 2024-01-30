@@ -25,6 +25,7 @@ public class MainConfig {
     private String message;
 
     public MainConfig(
+            //@Qualifier는 Spring 프레임워크에서 빈을 주입할 때 여러 후보 빈 중에서 어떤 빈을 선택할지 명시적으로 지정할 때 사용하는 어노테이션
             @Qualifier("smsMessageSender") MessageSender smsMessageSender,
             @Value("${from}") String message
     ){

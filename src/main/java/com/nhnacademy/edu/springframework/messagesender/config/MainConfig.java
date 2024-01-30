@@ -20,15 +20,25 @@ import org.springframework.context.annotation.*;
 public class MainConfig {
 
     //SmsMessageSender 를 JavaConfig 를 사용하도록 수정
-    //필드 주입방식
-    @Autowired
-    @Qualifier("smsMessageSender")
+    //생성자 주입방식
     private MessageSender smsMessageSender;
-
-    @Value("${from}")
     private String message;
 
-    @Bean
+    public MainConfig(
+            @Qualifier("smsMessageSender") MessageSender smsMessageSender,
+            @Value("${from}") String message
+    ){
+        this.smsMessageSender = smsMessageSender;
+        this.message = message;
+    }
+//    @Autowired
+//    @Qualifier("smsMessageSender")
+//    private MessageSender smsMessageSender;
+//
+//    @Value("${from}")
+//    private String message;
+
+    @Bean //이름지정 안할 시 메서드 이름으로 기본 지정.
     public MessageSendService messageSenderService(){
         return new MessageSendService(smsMessageSender, message);
     }

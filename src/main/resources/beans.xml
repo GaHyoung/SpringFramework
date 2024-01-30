@@ -18,6 +18,8 @@
         scope="singleton"
         init-method="init"
         destroy-method="destroy">
+<!--        Bean 설정에서 Qualifier 설정을 추가-->
+        <qualifier type="com.nhnacademy.edu.springframework.greeting.annotaion.Lang"/>
     </bean>
 <!--    <bean id="koreanGreeter" class="com.nhnacademy.edu.springframework.greeting.service.KoreanGreeter"-->
 <!--        scope="prototype"-->
@@ -34,6 +36,7 @@
           scope="prototype"
           init-method="init"
           destroy-method="destroy">
+        <qualifier type="com.nhnacademy.edu.springframework.messagesender.annotaion.Sms"/>
     </bean>
 
 <!--  property  무조건 넣도록 강제!-->
@@ -45,6 +48,9 @@
 <!--    </bean>-->
 
     <bean id="greetingService" class="com.nhnacademy.edu.springframework.greeting.GreetingService">
+        <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
+    </bean>
+    <bean id="messageSendervice" class="com.nhnacademy.edu.springframework.messagesender.MessageSendService">
         <!-- 해당 빈에서 필드에 @Autowired 어노테이션을 사용하므로 별도의 프로퍼티 설정이 필요하지 않음 -->
     </bean>
 

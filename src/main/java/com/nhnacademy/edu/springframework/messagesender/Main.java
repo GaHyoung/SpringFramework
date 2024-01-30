@@ -16,8 +16,8 @@ public class Main {
         String message = "Hello";
         //autowired 실행.
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
-            GreetingService service = context.getBean("greetingService", GreetingService.class);
-            service.greet();
+            MessageSendService service = context.getBean("messageSendervice", MessageSendService.class);
+            service.doMessage(user, message);
         }
 
     }

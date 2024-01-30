@@ -1,17 +1,15 @@
 package com.nhnacademy.edu.springframework.greeting;
 
+import com.nhnacademy.edu.springframework.greeting.annotaion.Lang;
 import com.nhnacademy.edu.springframework.greeting.service.Greeter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
-
-import java.util.List;
 
 public class GreetingService {
-    //setter 메소드가 없더라도 field 에 직접 @Autowired 를 설정하여 의존성을 주입 가능.
-    @Autowired
     private Greeter greeter;
 
-    public GreetingService(Greeter greeter){
+    //@Autowire 할때, @Qualifier 를 지정하여 빈의 이름으로 의존성을 주입 할 수 있다.
+    @Autowired
+    public GreetingService(@Lang Greeter greeter){
         this.greeter = greeter;
     }
 

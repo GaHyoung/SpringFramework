@@ -1,8 +1,10 @@
 package com.nhnacademy.edu.springframework.messagesender;
 
 import com.nhnacademy.edu.springframework.greeting.GreetingService;
+import com.nhnacademy.edu.springframework.messagesender.config.ApplicationConfig;
 import com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender;
 import com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -14,11 +16,13 @@ public class Main {
         );
 
         String message = "Hello";
-        //autowired 실행.
-        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")) {
-            MessageSendService service = context.getBean("messageSendervice", MessageSendService.class);
-            service.doMessage(user, message);
-        }
+
+        //XML 대신 java 기반 설정을 위해서는 AnnotationConfigApplicationContext 를 사용
+        //해당 패키지 안에 있는 @Configuration을 찾아간다.
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext("com.nhnacademy.edu.springframework.messagesender");
+
+        context.getBean("dbms", String.class).isEmpty();
 
     }
 }

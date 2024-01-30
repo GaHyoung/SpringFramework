@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
-@Configuration
+@Configuration //@Bean을 등록
+//이 위치에 있는 Bean Scanning 의 대상이 되는 어노테이션들(Component, Controller, Service, Repository) 확인.
 @ComponentScan(basePackages = {"com.nhnacademy.edu.springframework.messagesender"})
+//@Value
 @PropertySource("classpath:name.properties")
 public class MainConfig {
 

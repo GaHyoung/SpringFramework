@@ -6,17 +6,8 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
-    <bean id="dbms" class="java.lang.String">
-        <constructor-arg type="java.lang.String" value="MYSQL" />
-    </bean>
-
     <!-- annotation설정을 위해 추가-->
     <context:annotation-config/>
-    <!-- @Required 애너테이션 사용을 위해 추가 -->
-    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
-
-
 
     <bean id="englishGreeter" class="com.nhnacademy.edu.springframework.greeting.service.EnglishGreeter"
         scope="singleton"
@@ -52,6 +43,6 @@
 
 <!--    beans는 하나만! 주의. context:property-placeholder는 하나만 사용할 수 있음.-->
 <!--        <context:property-placeholder location="classpath:greeter.properties" />-->
-        <context:property-placeholder location="classpath:name.properties" />
+<!--        <context:property-placeholder location="classpath:name.properties" />-->
 
 </beans>

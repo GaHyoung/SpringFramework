@@ -1,4 +1,4 @@
-package com.nhnacademy.edu.springframework.greeting;
+package com.nhnacademy.edu.springframework.greeting.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

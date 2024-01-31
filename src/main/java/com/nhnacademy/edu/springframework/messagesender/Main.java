@@ -1,7 +1,9 @@
 package com.nhnacademy.edu.springframework.messagesender;
 
+import com.nhnacademy.edu.springframework.messagesender.config.DoorayConfig;
 import com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender;
 import com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,8 +13,11 @@ public class Main {
                 "010-1111-1111"
         );
 
-        String message = "Hello";
-        new MessageSendService(new EmailMessageSender()).doMessage(user, message);
-        new MessageSendService(new SmsMessageSender()).doMessage(user, message);
+        String message = "hello";
+
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DoorayConfig.class)) {
+            MessageSendService doorayService = context.getBean(MessageSendService.class);
+            doorayService.doMessage(user, message);
+        }
     }
 }

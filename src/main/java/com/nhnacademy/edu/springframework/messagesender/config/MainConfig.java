@@ -17,6 +17,7 @@ import org.springframework.context.annotation.*;
 @ComponentScan(basePackages = {"com.nhnacademy.edu.springframework.messagesender"})
 //@Value
 @PropertySource("classpath:name.properties")
+@EnableAspectJAutoProxy // @AspectJ 지원을 활성화 하려면 Java @configuration 에서 @EnableAspectJAutoProxy 를 사용하여 설정
 public class MainConfig {
 
     //SmsMessageSender 를 JavaConfig 를 사용하도록 수정
@@ -32,12 +33,6 @@ public class MainConfig {
         this.smsMessageSender = smsMessageSender;
         this.message = message;
     }
-//    @Autowired
-//    @Qualifier("smsMessageSender")
-//    private MessageSender smsMessageSender;
-//
-//    @Value("${from}")
-//    private String message;
 
     @Bean //이름지정 안할 시 메서드 이름으로 기본 지정.
     public MessageSendService messageSenderService(){
